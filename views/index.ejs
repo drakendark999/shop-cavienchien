@@ -271,9 +271,9 @@
         let viewElement = document.querySelector(".view-product");
         let newElement = document.querySelector(".new-product");
 
-        const urlHot = `http://localhost:3000/api/products/hot`;
-        const urlView = `http://localhost:3000/api/products/views`;
-        const urlDate = `http://localhost:3000/api/products/date`;
+        const urlHot = `https://shop-caviengiare.onrender.com/api/products/hot`;
+        const urlView = `https://shop-caviengiare.onrender.com/api/products/views`;
+        const urlDate = `https://shop-caviengiare.onrender.com/api/products/date`;
 
         const getProduct = async (url, element) => {
             let response = await fetch(url);
