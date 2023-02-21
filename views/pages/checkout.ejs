@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>MultiShop - Online Shop Website Template</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta content="Free HTML Templates" name="keywords" />
+        <meta content="Free HTML Templates" name="description" />
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon" />
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet" />
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <%- include('../blocks/header') %>
+
+        <!-- Breadcrumb Start -->
+        <div class="container-fluid">
+            <div class="row px-xl-5">
+                <div class="col-12">
+                    <nav class="breadcrumb bg-light mb-30">
+                        <a class="breadcrumb-item text-dark" href="#">Trang chủ</a>
+                        <a class="breadcrumb-item text-dark" href="#">Cửa hàng</a>
+                        <span class="breadcrumb-item active">Thanh toán</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+
+        <!-- Checkout Start -->
+        <div class="container-fluid">
+            <div class="row px-xl-5">
+                <div class="col-lg-8">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Địa chỉ</span></h5>
+                    <div class="bg-light p-30 mb-5">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Họ</label>
+                                <input id="first-name" class="form-control" type="text" placeholder="Họ" />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Tên</label>
+                                <input id="last-name" class="form-control" type="text" placeholder="Tên" />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>E-mail</label>
+                                <input id="email" class="form-control" type="text" placeholder="example@email.com" />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Số điện thoại</label>
+                                <input id="phone" class="form-control" type="text" placeholder="+123 456 789" />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Địa chỉ </label>
+                                <input id="address" class="form-control" type="text" placeholder="123 Street" />
+                            </div>
+
+                            <div class="col-md-12 form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="newaccount" />
+                                    <label class="custom-control-label" for="newaccount">Tạo tài khoản</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="shipto" />
+                                    <label class="custom-control-label" for="shipto" data-toggle="collapse" data-target="#shipping-address">Ship tới địa chỉ khác</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapse mb-5" id="shipping-address">
+                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Shipping Address</span></h5>
+                        <div class="bg-light p-30">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>First Name</label>
+                                    <input class="form-control" type="text" placeholder="John" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Last Name</label>
+                                    <input class="form-control" type="text" placeholder="Doe" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>E-mail</label>
+                                    <input class="form-control" type="text" placeholder="example@email.com" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Mobile No</label>
+                                    <input class="form-control" type="text" placeholder="+123 456 789" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Address Line 1</label>
+                                    <input class="form-control" type="text" placeholder="123 Street" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Address Line 2</label>
+                                    <input class="form-control" type="text" placeholder="123 Street" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Country</label>
+                                    <select class="custom-select">
+                                        <option selected>United States</option>
+                                        <option>Afghanistan</option>
+                                        <option>Albania</option>
+                                        <option>Algeria</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>City</label>
+                                    <input class="form-control" type="text" placeholder="New York" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>State</label>
+                                    <input class="form-control" type="text" placeholder="New York" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>ZIP Code</label>
+                                    <input class="form-control" type="text" placeholder="123" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Order Total</span></h5>
+                    <div class="bg-light p-30 mb-5">
+                        <div class="border-bottom show-pay-cart">
+                            <h6 class="mb-3">Sản phẩm</h6>
+                            <!-- <div class="d-flex justify-content-between">
+                            <p>Tên sản phẩm 1</p>
+                            <p>$150</p>
+                        </div> -->
+                        </div>
+                        <div class="border-bottom pt-3 pb-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h6>Tổng tiền</h6>
+                                <h6 class="pay__total"></h6>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <h6 class="font-weight-medium">Phí ship</h6>
+                                <h6 class="fee-ship font-weight-medium">20.000 VND</h6>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5>Tổng</h5>
+                                <h5 class="total-and-ship">$160</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Thanh toán</span></h5>
+                        <div class="bg-light p-30">
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="payment" id="paypal" />
+                                    <label class="custom-control-label" for="paypal">Paypal</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="payment" id="directcheck" />
+                                    <label class="custom-control-label" for="directcheck">Trực tiếp khi nhận hàng</label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="payment" id="banktransfer" />
+                                    <label class="custom-control-label" for="banktransfer">Chuyển khoản</label>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-order btn btn-block btn-primary font-weight-bold py-3">Xác nhận</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Checkout End -->
+
+        <!-- Footer Start -->
+        <%- include('../blocks/footer') %>
+        <!-- Footer End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Contact Javascript File -->
+        <script src="mail/jqBootstrapValidation.min.js"></script>
+        <script src="mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+        <script>
+            // Show cart
+            function showCartItem(arr) {
+                arr.forEach((item, index) => {
+                    item_add = `
+            <div class="d-flex justify-content-between">
+                <p>${item.name}</p>
+                <p class="pay__price-item">${(item.price * item.quantity).toLocaleString("it-IT", { style: "currency", currency: "VND" })}</p>
+            </div>
+        
+        `;
+                    document.querySelector(".show-pay-cart").innerHTML += item_add;
+                });
+            }
+            var cart_arr = JSON.parse(localStorage.getItem("cart")) || "";
+            var item_add = "";
+            if (cart_arr) {
+                showCartItem(cart_arr);
+            }
+
+            // total price
+            var priceElements = Array.from(document.querySelectorAll(".pay__price-item"));
+
+            const arr_total = priceElements.map((item) => Number(item.innerText.slice(0, -3).replaceAll(".", "")));
+
+            let total = 0;
+            for (let item of arr_total) {
+                total += item;
+            }
+
+            document.querySelector(".pay__total").innerText = total.toLocaleString("it-IT", { style: "currency", currency: "VND" });
+
+            let ship_fee = Number(document.querySelector(".fee-ship").innerText.slice(0, -3).replaceAll(".", ""));
+
+            document.querySelector(".total-and-ship").innerText = (total + ship_fee).toLocaleString("it-IT", { style: "currency", currency: "VND" });
+
+            // click button to order
+            document.querySelector(".btn-order").addEventListener("click", (e) => {
+                e.preventDefault();
+                let first_name = document.querySelector("#first-name").value.trim();
+                let last_name = document.querySelector("#last-name").value.trim();
+                let email = document.querySelector("#email").value.trim();
+                let phone = document.querySelector("#phone").value.trim();
+                let address = document.querySelector("#address").value.trim();
+
+                if ((first_name, last_name == "")) {
+                    alert("Chưa nhập họ tên");
+                    return;
+                }
+                if (address == "") {
+                    alert("Chưa nhập địa chỉ");
+                    return;
+                }
+                if (email == "") {
+                    alert("Chưa nhập email");
+                    return;
+                }
+                if (phone == "") {
+                    alert("Chưa nhập số điện thoại");
+                    return;
+                }
+
+                let orderInfor = {
+                    customer_name: `${first_name} ${last_name}`,
+                    customer_address: address,
+                    customer_email: email,
+                    customer_phone: phone,
+                    create_date: new Date().toISOString().slice(0, 10),
+                    status: "Chờ xác nhận",
+                };
+
+                let url = "http://localhost:3000/orders";
+                options = {
+                    method: "POST",
+                    body: JSON.stringify(orderInfor),
+                    headers: { "Content-Type": "application/json" },
+                };
+                fetch(url, options)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        order_id = data.id;
+                        saveDetailOrder(order_id);
+                        localStorage.removeItem("cart");
+                    });
+            });
+
+            // save order details
+            const saveDetailOrder = async (order_id) => {
+                let cart_to_order = JSON.parse(localStorage.getItem("cart"));
+                cart_to_order.forEach(async (item) => {
+                    let objItem = {
+                        order_id: order_id,
+                        product_id: item.id,
+                        quantity: item.quantity,
+                        unti_price: item.price,
+                    };
+
+                    url = "http://localhost:3000/order_detail";
+                    options = {
+                        method: "POST",
+                        body: JSON.stringify(objItem),
+                        headers: { "Content-Type": "application/json" },
+                    };
+                    const response = await fetch(url, options);
+                    return response.json();
+                });
+            };
+        </script>
+    </body>
+</html>

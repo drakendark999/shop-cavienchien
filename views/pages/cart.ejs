@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>MultiShop - Online Shop Website Template</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta content="Free HTML Templates" name="keywords" />
+        <meta content="Free HTML Templates" name="description" />
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon" />
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet" />
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <!-- Topbar Start -->
+        <%- include('../blocks/header') %>
+
+        <!-- Breadcrumb Start -->
+        <div class="container-fluid">
+            <div class="row px-xl-5">
+                <div class="col-12">
+                    <nav class="breadcrumb bg-light mb-30">
+                        <a class="breadcrumb-item text-dark" href="#">Home</a>
+                        <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                        <span class="breadcrumb-item active">Shopping Cart</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+
+        <!-- Cart Start -->
+        <div class="container-fluid">
+            <div class="row px-xl-5">
+                <div class="col-lg-8 table-responsive mb-5">
+                    <table class="table table-light table-borderless table-hover text-center mb-0">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Products</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody class="align-middle tbody-cart-add">
+                            <!-- cart -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-4">
+                    <form class="mb-30" action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code" />
+                            <div class="input-group-append">
+                                <button class="btn btn-primary">Apply Coupon</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Cart Summary</span></h5>
+                    <div class="bg-light p-30 mb-5">
+                        <div class="border-bottom pb-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h6>Subtotal</h6>
+                                <h6 class="total-all">$150</h6>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <h6 class="font-weight-medium">Shipping</h6>
+                                <h6 class="font-weight-medium fee-ship">$10</h6>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5>Total</h5>
+                                <h5 class="total-and-ship">$160</h5>
+                            </div>
+                            <button class="btn btn-block btn-primary font-weight-bold my-3 py-3 to-page-pay">Proceed To Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Cart End -->
+
+        <!-- Footer Start -->
+        <%- include('../blocks/footer') %>
+        <!-- Footer End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Contact Javascript File -->
+        <script src="mail/jqBootstrapValidation.min.js"></script>
+        <script src="mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+        <script>
+            function showCartItem(arr) {
+                arr.forEach((item, index) => {
+                    item_add = `
+        <tr>
+            <td class="align-middle"><img src="img/${item.image}" alt="" style="width: 50px" /> </td>
+            <td class="align-middle"> ${item.name}</td>
+            <td class="align-middle price-item">${Number(item.price).toLocaleString("it-IT", { style: "currency", currency: "VND" })}</td>
+            <td class="align-middle">
+                <div class="input-group quantity mx-auto" style="width: 100px">
+                    <div class="input-group-btn">
+                        <button class="btn btn-sm btn-primary btn-minus" onclick="minus(${index})" >
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <input 
+                        type="text" min="1" class="quantity-item form-control form-control-sm bg-secondary border-0 text-center" 
+                        value="${item.quantity}"
+                        oninput="caculatePrice(this.value,${index})"
+                    />
+                    <div class="input-group-btn">
+                        <button class="btn btn-sm btn-primary btn-plus" onclick="plus(${index})" >
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </td>
+            <td class="align-middle total-price">${(item.price * item.quantity).toLocaleString("it-IT", { style: "currency", currency: "VND" })}</td>
+            <td class="align-middle">
+                <button class="btn btn-sm btn-danger" onclick="deleteItemCart(${index})"><i class="fa fa-times" ></i></button>
+            </td>
+        </tr>
+        `;
+                    document.querySelector(".tbody-cart-add").innerHTML += item_add;
+                });
+            }
+            var cart_arr = JSON.parse(localStorage.getItem("cart"));
+            var item_add = "";
+            if (cart_arr) {
+                console.log(cart_arr[0].price);
+                showCartItem(cart_arr);
+            }
+
+            // caculate Price
+            const caculatePrice = (count, index) => {
+                let price_item = Number(document.getElementsByClassName("price-item")[index].innerText.slice(0, -3).replaceAll(".", ""));
+                let total = price_item * Number(count);
+                console.log(price_item)
+                
+                document.getElementsByClassName("total-price")[index].innerText = total.toLocaleString("it-IT", { style: "currency", currency: "VND" });
+                caculateTotalPrice();
+            };
+
+            const caculateTotalPrice = () => {
+                arr_total_element = Array.from(document.querySelectorAll(".total-price"));
+                const arr_total = arr_total_element.map((item) => Number(item.innerText.slice(0, -3).replaceAll(".", "")));
+
+                let total = 0;
+                for (let item of arr_total) {
+                    total += item;
+                }
+
+                document.querySelector(".total-all").innerText = total.toLocaleString("it-IT", { style: "currency", currency: "VND" });
+
+                let ship_fee = Number(document.querySelector(".fee-ship").innerText.slice(0, -3).replaceAll(".", ""));
+
+                document.querySelector(".total-and-ship").innerText = (total + ship_fee).toLocaleString("it-IT", { style: "currency", currency: "VND" });
+            };
+            caculateTotalPrice();
+
+            // Plus and minuend
+            const plus = (index) => {
+                document.querySelectorAll(".quantity-item")[index].value++;
+                let count = Number(document.querySelectorAll(".quantity-item")[index].value);
+                cart_arr[index].quantity++;
+                let new_carr = [...cart_arr];
+                console.log(new_carr);
+                localStorage.setItem("cart", JSON.stringify(new_carr));
+
+                caculatePrice(count, index);
+            };
+            const minus = (index) => {
+                document.querySelectorAll(".quantity-item")[index].value == 1
+                    ? (document.querySelectorAll(".quantity-item")[index].value = 1)
+                    : document.querySelectorAll(".quantity-item")[index].value--;
+
+                let count = document.querySelectorAll(".quantity-item")[index].value;
+
+                if (cart_arr[index].quantity == 1) {
+                    cart_arr[index].quantity = 1;
+                } else {
+                    cart_arr[index].quantity--;
+                }
+
+                let new_carr = [...cart_arr];
+                localStorage.setItem("cart", JSON.stringify(new_carr));
+
+                caculatePrice(count, index);
+            };
+
+            // Delete
+            const deleteItemCart = (index) => {
+                cart_arr.splice(index, 1);
+                localStorage.setItem("cart", JSON.stringify(cart_arr));
+                document.querySelector(".tbody-cart-add").innerHTML = "";
+                showCartItem(cart_arr);
+                caculateTotalPrice();
+            };
+
+            // to page Pay
+            document.querySelector(".to-page-pay").onclick = () => {
+                document.location = "/checkout";
+            };
+        </script>
+    </body>
+</html>
