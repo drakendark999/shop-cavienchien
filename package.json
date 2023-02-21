@@ -2,7 +2,9 @@
   "name": "sever",
   "version": "0.0.0",
   "private": true,
-  
+  "engines": {
+    "node":"14.x"
+  },
   "scripts": {
     "start": "nodemon ./bin/www"
   },
