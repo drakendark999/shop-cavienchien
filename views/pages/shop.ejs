@@ -278,9 +278,9 @@
             const urlHref = window.location.href;
             const id = parseInt(urlHref.split("/").pop());
             let listElement = document.querySelector('.list-product')
-            let url=`http://localhost:3000/api/products`
+            let url=`https://shop-caviengiare.onrender.com/api/products`
             if(id%1==0){
-                 url = `http://localhost:3000/api/category/products/${id}`;
+                 url = `https://shop-caviengiare.onrender.com/api/category/products/${id}`;
             } else{
 
             }
