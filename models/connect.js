@@ -1,8 +1,9 @@
 var mysql = require('mysql');
 const db = mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    database : 'asmnodejs'
+    host : 'bxupgpkwkdn45brom4lb-mysql.services.clever-cloud.com',
+    user : 'uks4jjqmugpnzf4u',
+    password:'0rG63ZsYipHxqMxfVGqR',
+    database : 'bxupgpkwkdn45brom4lb'
 })
 db.connect(function(err) {    
     if (err) throw err;    

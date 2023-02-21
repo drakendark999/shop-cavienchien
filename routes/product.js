@@ -11,7 +11,7 @@ data.getData("category", function (categoryData) {
         router.get("/:id", function (req, res, next) {
             let id = req.params.id;
             data.detail(id,'product',function (detailProduct){
-                res.render("pages/detail", { data: detailProduct, category: categoryData,products : productData });
+                res.render("pages/detail", { data: detailProduct, category: categoryData,products : productData,username: req.session.username });
             })
         });
     });
