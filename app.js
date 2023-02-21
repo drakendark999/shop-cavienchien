@@ -17,7 +17,7 @@ var apiProductsRouter = require('./routes/api')
 
 var adminHomeRouter = require('./routes/admin/home')
 
-var app = express();
+var app = express()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
