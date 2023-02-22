@@ -2,10 +2,17 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>MultiShop - Online Shop Website Template</title>
+        <title>Beco Food</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="Free HTML Templates" name="keywords" />
         <meta content="Free HTML Templates" name="description" />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon" />
@@ -26,6 +33,26 @@
     </head>
 
     <body>
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content">
+                <div class="container" style="margin-top: 5%">
+                    <div class="row">
+                        <div class="jumbotron" style="box-shadow: 2px 2px 4px #000000">
+                            <h2 class="text-center">YOUR ORDER HAS BEEN RECEIVED</h2>
+                            <h3 class="text-center">Thank you for your payment, it’s processing</h3>
+
+                            <p class="text-center">Your order # is: 100000023</p>
+                            <p class="text-center">You will receive an order confirmation email with details of your order and a link to track your process.</p>
+                            <center>
+                                <div class="btn-group" style="margin-top: 50px">
+                                    <a href="/" class="btn btn-lg btn-warning">CONTINUE</a>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <%- include('../blocks/header') %>
 
         <!-- Breadcrumb Start -->
@@ -55,11 +82,11 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Tên</label>
-                                <input id="last-name" class="form-control" type="text" placeholder="Tên" />
+                                <input id="last-name" name="name" class="form-control" type="text" placeholder="Tên" />
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>E-mail</label>
-                                <input id="email" class="form-control" type="text" placeholder="example@email.com" />
+                                <input id="email" name="email" class="form-control" type="text" placeholder="example@email.com" />
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Số điện thoại</label>
@@ -80,58 +107,6 @@
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="shipto" />
                                     <label class="custom-control-label" for="shipto" data-toggle="collapse" data-target="#shipping-address">Ship tới địa chỉ khác</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="collapse mb-5" id="shipping-address">
-                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Shipping Address</span></h5>
-                        <div class="bg-light p-30">
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <label>First Name</label>
-                                    <input class="form-control" type="text" placeholder="John" />
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Last Name</label>
-                                    <input class="form-control" type="text" placeholder="Doe" />
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>E-mail</label>
-                                    <input class="form-control" type="text" placeholder="example@email.com" />
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Mobile No</label>
-                                    <input class="form-control" type="text" placeholder="+123 456 789" />
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Address Line 1</label>
-                                    <input class="form-control" type="text" placeholder="123 Street" />
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Address Line 2</label>
-                                    <input class="form-control" type="text" placeholder="123 Street" />
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Country</label>
-                                    <select class="custom-select">
-                                        <option selected>United States</option>
-                                        <option>Afghanistan</option>
-                                        <option>Albania</option>
-                                        <option>Algeria</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>City</label>
-                                    <input class="form-control" type="text" placeholder="New York" />
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>State</label>
-                                    <input class="form-control" type="text" placeholder="New York" />
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>ZIP Code</label>
-                                    <input class="form-control" type="text" placeholder="123" />
                                 </div>
                             </div>
                         </div>
@@ -249,8 +224,13 @@
             document.querySelector(".total-and-ship").innerText = (total + ship_fee).toLocaleString("it-IT", { style: "currency", currency: "VND" });
 
             // click button to order
+            // const api = "http://localhost:3333";
+        const api='https://shop-caviengiare.onrender.com/'
+
+
             document.querySelector(".btn-order").addEventListener("click", (e) => {
                 e.preventDefault();
+
                 let first_name = document.querySelector("#first-name").value.trim();
                 let last_name = document.querySelector("#last-name").value.trim();
                 let email = document.querySelector("#email").value.trim();
@@ -283,7 +263,7 @@
                     status: "Chờ xác nhận",
                 };
 
-                let url = "http://localhost:3000/orders";
+                let url = `${api}/checkout/api/orders`;
                 options = {
                     method: "POST",
                     body: JSON.stringify(orderInfor),
@@ -292,31 +272,42 @@
                 fetch(url, options)
                     .then((res) => res.json())
                     .then((data) => {
-                        order_id = data.id;
-                        saveDetailOrder(order_id);
-                        localStorage.removeItem("cart");
+                        url = `${api}/checkout/api/ordersmax`;
+                        fetch(url)
+                            .then((res) => res.json())
+                            .then((data) => {
+                                let order_id = data[0].id;
+
+                                saveDetailOrder(order_id);
+                                localStorage.removeItem("cart");
+                                document.getElementById("id01").style.display = "block";
+                            });
                     });
             });
 
             // save order details
-            const saveDetailOrder = async (order_id) => {
+            const saveDetailOrder = (order_id) => {
                 let cart_to_order = JSON.parse(localStorage.getItem("cart"));
-                cart_to_order.forEach(async (item) => {
+                cart_to_order.forEach((item) => {
                     let objItem = {
                         order_id: order_id,
                         product_id: item.id,
                         quantity: item.quantity,
                         unti_price: item.price,
+                        total:item.price*item.quantity
                     };
-
-                    url = "http://localhost:3000/order_detail";
+                    console.log(objItem);
+                    url = `${api}/checkout/api/order-detail`;
                     options = {
                         method: "POST",
                         body: JSON.stringify(objItem),
                         headers: { "Content-Type": "application/json" },
                     };
-                    const response = await fetch(url, options);
-                    return response.json();
+                    fetch(url, options)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log(data);
+                        });
                 });
             };
         </script>

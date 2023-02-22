@@ -2,10 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>MultiShop - Online Shop Website Template</title>
+        <title>Beco Food</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="Free HTML Templates" name="keywords" />
         <meta content="Free HTML Templates" name="description" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon" />
@@ -26,6 +27,18 @@
     </head>
 
     <body>
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content">
+                <header class="w3-container w3-teal">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <h2>Giỏ Hàng</hh2>
+                </header>
+                <div class="w3-container">
+                    <p>Đã thêm vào giỏ hàng của bạn</p>
+                </div>
+                
+            </div>
+        </div>
         <%- include('../blocks/header') %>
 
         <!-- Breadcrumb Start -->
@@ -49,7 +62,7 @@
                     <div id="product-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner bg-light">
                             <div class="carousel-item active">
-                                <img class="w-100 h-100"  alt="Image" id="img-detail-product" />
+                                <img class="w-100 h-100" alt="Image" id="img-detail-product" />
                                 <!-- <img class="w-100 h-100" src="img/<%=data.image%>" alt="Image" id="img-detail-product" /> -->
                             </div>
                             <!-- <div class="carousel-item">
@@ -175,8 +188,11 @@
         (async () => {
             const urlHref = window.location.href;
             const id = urlHref.split("/").pop();
+            // const api = "http://localhost:3333";
+        const api='https://shop-caviengiare.onrender.com/'
 
-            let url = `http://localhost:3000/api/products/detail/${id}`;
+
+            let url = `${api}/api/products/detail/${id}`;
             const res = await fetch(url);
             const data = await res.json();
 
@@ -199,24 +215,46 @@
                         <div class="d-flex align-items-center mb-4 pt-2">
                             <div class="input-group quantity mr-3" style="width: 130px">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-primary btn-minus">
+                                    <button onclick="minus()" class="btn btn-primary btn-minus">
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control bg-secondary border-0 text-center" value="1" />
+                                <input type="text" class="quantity-item form-control bg-secondary border-0 text-center" value="1" />
                                 <div class="input-group-btn">
-                                    <button class="btn btn-primary btn-plus">
+                                    <button onclick="plus()" class="btn btn-primary btn-plus">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
-                            <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Thêm vào giỏ hàng</button>
+                            <button onclick="addCart(${data.id},'${data.nameProduct}',${data.price},'${data.image}')" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Thêm vào giỏ hàng</button>
                         </div>
                     </div>
 
             `;
             document.querySelector(".detail-product").innerHTML = str;
-            document.querySelector("#img-detail-product").setAttribute('src',`img/${data.image}`)
+            document.querySelector("#img-detail-product").setAttribute("src", `img/${data.image}`);
         })();
+        function addCart(id, name, price, image) {
+            let value_product = document.querySelector(".quantity-item").value;
+            let cart_arr = JSON.parse(localStorage.getItem("cart"));
+            if (!cart_arr) {
+                cart_arr = [];
+                cart_arr.push({ id: id, name: name, price: price, image: image, quantity: value_product });
+            } else {
+                let item = cart_arr.find((item) => item.id == id);
+                if (item) item.quantity = Number(item.quantity) + Number(value_product);
+                else cart_arr.push({ id: id, name: name, price: price, image: image, quantity: value_product });
+            }
+            localStorage.setItem("cart", JSON.stringify(cart_arr));
+            document.getElementById('id01').style.display='block'
+
+        }
+        const minus = () => {
+            document.querySelector(".quantity-item").value == 1 ? (document.querySelector(".quantity-item").value = 1) : document.querySelector(".quantity-item").value--;
+        };
+
+        const plus = () => {
+            document.querySelector(".quantity-item").value++;
+        };
     </script>
 </html>

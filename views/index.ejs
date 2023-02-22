@@ -2,11 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>MultiShop - Online Shop Website Template</title>
+        <title>Beco Food</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="Free HTML Templates" name="keywords" />
         <meta content="Free HTML Templates" name="description" />
-
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon" />
 
@@ -26,8 +26,21 @@
     </head>
 
     <body>
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content">
+                <header class="w3-container w3-teal">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <h2>Giỏ Hàng</hh2>
+                </header>
+                <div class="w3-container">
+                    <p>Đã thêm vào giỏ hàng của bạn</p>
+                </div>
+                
+            </div>
+        </div>
         <!-- Header Start -->
         <%- include('blocks/header') %>
+
         <!-- Header End -->
 
         <!-- Carousel Start -->
@@ -45,11 +58,11 @@
                                 <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" style="object-fit: cover" />
                                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                     <div class="p-3" style="max-width: 700px">
-                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men Fashion</h1>
+                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Xiên que</h1>
                                         <p class="mx-md-5 px-5 animate__animated animate__bounceIn">
-                                            Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam
+                                            Giá rẻ bất ngờ
                                         </p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Mua ngay</a>
                                     </div>
                                 </div>
                             </div>
@@ -57,11 +70,11 @@
                                 <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover" />
                                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                     <div class="p-3" style="max-width: 700px">
-                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Women Fashion</h1>
+                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Món mới</h1>
                                         <p class="mx-md-5 px-5 animate__animated animate__bounceIn">
-                                            Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam
+                                            Độc lạ
                                         </p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Mua ngay</a>
                                     </div>
                                 </div>
                             </div>
@@ -69,11 +82,11 @@
                                 <img class="position-absolute w-100 h-100" src="img/carousel-3.jpg" style="object-fit: cover" />
                                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                     <div class="p-3" style="max-width: 700px">
-                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids Fashion</h1>
+                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Thanh cua</h1>
                                         <p class="mx-md-5 px-5 animate__animated animate__bounceIn">
-                                            Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam
+                                            Siêu rẻ
                                         </p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Mua ngay</a>
                                     </div>
                                 </div>
                             </div>
@@ -84,17 +97,17 @@
                     <div class="product-offer mb-30" style="height: 200px">
                         <img class="img-fluid" src="img/offer-1.jpg" alt="" />
                         <div class="offer-text">
-                            <h6 class="text-white text-uppercase">Save 20%</h6>
-                            <h3 class="text-white mb-3">Special Offer</h3>
-                            <a href="" class="btn btn-primary">Shop Now</a>
+                            <h6 class="text-white text-uppercase">Giảm 20%</h6>
+                            <h3 class="text-white mb-3">Khuyến mãi đặc biệt</h3>
+                            <a href="" class="btn btn-primary">Mua ngay</a>
                         </div>
                     </div>
                     <div class="product-offer mb-30" style="height: 200px">
                         <img class="img-fluid" src="img/offer-2.jpg" alt="" />
                         <div class="offer-text">
-                            <h6 class="text-white text-uppercase">Save 20%</h6>
-                            <h3 class="text-white mb-3">Special Offer</h3>
-                            <a href="" class="btn btn-primary">Shop Now</a>
+                            <h6 class="text-white text-uppercase">Giảm 20%</h6>
+                            <h3 class="text-white mb-3">Khuyến mãi đặc biệt</h3>
+                            <a href="" class="btn btn-primary">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -108,25 +121,25 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px">
                         <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
+                        <h5 class="font-weight-semi-bold m-0">Chất lượng sản phẩm</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px">
                         <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-                        <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
+                        <h5 class="font-weight-semi-bold m-0">Miễn ship</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px">
                         <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
+                        <h5 class="font-weight-semi-bold m-0">Cam kết thực phẩm sạch</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px">
                         <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                        <h5 class="font-weight-semi-bold m-0">Hỗ trợ 24/7</h5>
                     </div>
                 </div>
             </div>
@@ -171,14 +184,13 @@
                                 </a>
                                 <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href="/product/<%=p.id%>"><i class="fa fa-search"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
                             <a class="h6 text-decoration-none text-truncate" href="/product/<%=p.id%>"><%=p.nameProduct%></a>
                             <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5><%=p.price%></h5>
-                                <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                <h5><%=Number(p.price).toLocaleString("it-IT", { style: "currency", currency: "VND" })%></h5>
                             </div>
                             <div class="d-flex align-items-center justify-content-center mb-1">
                                 <small class="fa fa-star text-primary mr-1"></small>
@@ -267,13 +279,16 @@
         <script src="js/main.js"></script>
     </body>
     <script>
+        // const api = "http://localhost:3333";
+        const api='https://shop-caviengiare.onrender.com/'
+
         let hotElement = document.querySelector(".hot-product");
         let viewElement = document.querySelector(".view-product");
         let newElement = document.querySelector(".new-product");
 
-        const urlHot = `https://shop-caviengiare.onrender.com/api/products/hot`;
-        const urlView = `https://shop-caviengiare.onrender.com/api/products/views`;
-        const urlDate = `https://shop-caviengiare.onrender.com/api/products/date`;
+        const urlHot = `${api}/api/products/hot`;
+        const urlView = `${api}/api/products/views`;
+        const urlDate = `${api}/api/products/date`;
 
         const getProduct = async (url, element) => {
             let response = await fetch(url);
@@ -297,8 +312,7 @@
                         <div class="text-center py-4">
                             <a class="h6 text-decoration-none text-truncate" href="/product/${product.id}">${product.nameProduct}</a>
                             <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>${product.price}</h5>
-                                <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                <h5>${Number(product.price).toLocaleString("it-IT", { style: "currency", currency: "VND" })}</h5>
                             </div>
                             <div class="d-flex align-items-center justify-content-center mb-1">
                                 <small class="fa fa-star text-primary mr-1"></small>
@@ -322,6 +336,7 @@
         // Add Cart
         function addCart(e, id, name, price, image) {
             e.preventDefault();
+            document.getElementById('id01').style.display='block'
             let cart_arr = JSON.parse(localStorage.getItem("cart"));
             if (!cart_arr) {
                 cart_arr = [];

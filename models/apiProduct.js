@@ -7,9 +7,24 @@ exports.list = (callback) => {
         callback(result);
     });
 };
+exports.max = (table, callback) => {
+    var sql = `SELECT * FROM ${table} ORDER BY id DESC LIMIT 0, 1`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        callback(result);
+    });
+};
 
 exports.create = (data, callback) => {
     let sql = `INSERT INTO product SET ?`;
+    db.query(sql, data, (err, d) => {
+        if (err) throw err;
+        callback(d);
+    });
+};
+
+exports.add = (table, data, callback) => {
+    let sql = `INSERT INTO ${table} SET ?`;
     db.query(sql, data, (err, d) => {
         if (err) throw err;
         callback(d);

@@ -1,17 +1,21 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../../models/connect");
+var path = require('path')
 
 var data = require("../../models/data");
+const formidable = require("formidable");
+const fs = require("fs");
 
-data.getHotData("product", function (listHotProducts) {
+data.getData("orders", function (listOrder) {
     data.getViewData("product", function (listViewProducts) {
         data.getData("category", function (category) {
             router.get("/", function (req, res) {
                 if (req.session.admin) {
+                    console.log(listOrder);
                     res.render("admin/home", {
                         categories: category,
-                        products: listHotProducts,
+                        listOrder: listOrder,
                         productsView: listViewProducts,
                     });
                 } else {
@@ -21,6 +25,35 @@ data.getHotData("product", function (listHotProducts) {
         });
     });
 });
+
+data.getData("category", function (category) {
+    router.get("/orders=:id", (req, res) => {
+        let id = req.params.id;
+        let sql = `SELECT * FROM order_detail WHERE order_id =${id}`;
+        db.query(sql, (err, rows) => {
+            if (err) {
+                throw err;
+            } else {
+                sql = `SELECT * FROM order_detail INNER JOIN product ON order_detail.product_id = product.id`;
+                db.query(sql, (err, data) => {
+                    if (err) throw err;
+                    res.render("admin/pages/detailOrder", { data: data, categories: category });
+                });
+            }
+        });
+    });
+});
+
+router.get("/update-orders=:id", (req, res) => {
+    let id = req.params.id;
+    let sql = `UPDATE orders SET status='Xác nhận' WHERE id =${id}`;
+
+    db.query(sql, (err, rows) => {
+        if (err) throw err;
+        res.redirect("/admin");
+    });
+});
+
 router.get("/login", function (req, res) {
     let adminError = false;
     if (req.session.adminError) {
@@ -28,6 +61,7 @@ router.get("/login", function (req, res) {
     }
     res.render("admin/login", { adminError: adminError });
 });
+
 router.post("/login_", function (req, res) {
     let username = req.body.username;
     let password = req.body.password;
@@ -108,25 +142,57 @@ router.post("/send_", function (req, res) {
     });
 });
 data.getData("product", function (products) {
-
-        data.getData("category", function (category) {
-            router.get("/products", function (req, res) {
-                
-                    res.render("admin/pages/products", {
-                        categories: category,
-                        products: products,
-                    });
-                
+    data.getData("category", function (category) {
+        router.get("/products", function (req, res) {
+            res.render("admin/pages/products", {
+                categories: category,
+                products: products,
             });
         });
-
+    });
 });
 
-data.getData('category',(category) => {
-    
-    router.get('/add-product',(req,res) => {
-        res.render('admin/pages/formProduct',{category: category})
-    })
-})
+data.getData("category", (category) => {
+    router.get("/add-product", (req, res) => {
+        res.render("admin/pages/formProduct", { category: category });
+    });
+});
+router.post("/add-product", (req, res) => {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        let pathFile = files.hinhsp.filepath;
+        let tenFile = files.hinhsp.originalFilename;
 
+        let nameProduct = fields.tenSp;
+        let price = fields.gia;
+        
+        let category_id = fields.theLoai;
+        let describe = fields.moTa;
+
+        let desPath = path.join(__dirname, "..", "..", "public/img/" + tenFile);
+        console.log("day là despath: " + desPath);
+        fs.copyFile(pathFile, desPath, function (err) {
+            if (err) throw err;
+            fs.unlink(pathFile, function () {
+                console.log("Đã xóa file tạm");
+            });
+            console.log(`Đã upload xong file: ${tenFile} `);
+        });
+        let newSp = {
+            nameProduct: nameProduct,
+            price: price,
+            
+            category_id: category_id,
+            describe: describe,
+            image: tenFile,
+        };
+        console.log(newSp);
+
+        let sql = `INSERT INTO product SET ?`;
+        db.query(sql, newSp, function (err, dataAdd) {
+            if (err) throw err;
+            res.redirect("/admin");
+        });
+    });
+});
 module.exports = router;
